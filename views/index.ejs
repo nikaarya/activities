@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Activity Center</h1>
+
+    <% if (locals.data) { %>
+ <div class="center-text">
+        <h3>Activity: </h3>
+        <p>
+          <%= data.activity %>
+        </p>
+      </div>
+      
+      <div class="center-text">
+        <h3>Type of activity: </h3>
+        <% dataType = data.type 
+        dataTypeCapitalized = dataType.charAt(0).toUpperCase() + dataType.slice(1);%>
+        <p>
+          <%= dataTypeCapitalized %>
+        </p>
+      </div>
+
+      <div class="center-text">
+        <h3>Number of participants: </h3>
+        <p>
+          <%= data.participants %>
+        </p>
+      </div>
+    <% } %>    
+       
+    <% if (locals.error) { %>
+        <div>
+            <p class="center-text">
+                 <%= error %>
+            </p>
+            
+        </div>
+    <% } %>
+
+
+    <form action="/" id="form" class="form" method="POST">
+        <select name="type" class="form-select">
+            <option value="" data-display="Select">Random type</option>
+            <option value="education">Education</option>
+            <option value="charity">Charity</option>
+            <option value="recreational">Recreational</option>
+            <option value="relaxation">Relaxation</option>
+            <option value="busywork">Busywork</option>
+            <option value="social">Social</option>
+            <option value="diy">DIY</option>
+            <option value="music">Music</option>
+        </select>
+        <select name="participants" class="form-select">
+            <option value="">Any number of people</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <div class="generateActivityButtonDiv">
+            <form action="/submit" method="POST">
+                <input type="submit" class="generateActivityButton" value="Go">
+            </form>
+        </div> 
+    </form>
+
+        <div class="coctail-image-container">
+            <img class="coctail-image" src="images/cocktail-pink.png" alt="Picture of a coctail">
+        </div>
+    
+
+    <%- include ('partials/footer.ejs') %>
+    
