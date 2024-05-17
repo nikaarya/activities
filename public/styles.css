@@ -68,6 +68,12 @@ p {
   padding-left: 15px;
 }
 
+.square {
+    height: 0;
+    width: 20%;
+    padding-bottom: 20%;
+}
+
 footer {
     color: #e9aeae;
     position: absolute;
